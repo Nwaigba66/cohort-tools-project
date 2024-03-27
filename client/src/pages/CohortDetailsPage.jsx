@@ -46,9 +46,9 @@ function CohortDetailsPage() {
     <div className={`CohortDetails bg-gray-100 py-6 px-4`}>
       {/* Drawer */}
       <div
-className={`drawer transition-transform transform ${
-       showDrawer ? "translate-x-0" : "translate-x-full"
-     } fixed right-0 top-0 h-full bg-white shadow-md z-10`}
+        className={`drawer transition-transform transform ${
+          showDrawer ? "translate-x-0" : "translate-x-full"
+        } fixed right-0 top-0 h-full bg-white shadow-md z-10`}
       >
         {cohort && showDrawer && (
           <StudentCreateForm
@@ -63,19 +63,12 @@ className={`drawer transition-transform transform ${
         )}
       </div>
 
-
-      <div
-        className={`CohortDetails bg-gray-100 py-6 px-4 ${
-          showDrawer ? "opacity-30 pointer-events-none" : ""
-        }`}
-      >
+      <div className={`CohortDetails bg-gray-100 py-6 px-4 ${showDrawer ? "opacity-30 pointer-events-none" : ""}`}>
         {/* Cohort details */}
         <div className="bg-white p-8  px-24 rounded-lg shadow-md mb-6">
           {cohort && (
             <>
-              <h1 className="text-2xl font-semibold mb-4">
-                {cohort.cohortName}
-              </h1>
+              <h1 className="text-2xl font-semibold mb-4">{cohort.cohortName}</h1>
               <br />
 
               <div className="grid grid-cols-2 gap-6 mb-4 border-b pb-4">
@@ -95,8 +88,7 @@ className={`drawer transition-transform transform ${
                 </div>
                 <div className="text-left pl-4">
                   <p className="mb-2 border-b pb-2">
-                    <strong>Status:</strong>{" "}
-                    {cohort.inProgress ? "In Progress" : "Not Started"}
+                    <strong>Status:</strong> {cohort.inProgress ? "In Progress" : "Not Started"}
                   </p>
                   <p className="mb-2 border-b pb-2">
                     <strong>Total Hours:</strong> {cohort.totalHours}
@@ -115,9 +107,7 @@ className={`drawer transition-transform transform ${
                   <button
                     disabled={showDrawer}
                     className={`transition duration-300 ease-in-out text-white px-4 py-2 w-full rounded ${
-                      showDrawer
-                        ? "bg-gray-500 hover:bg-gray-500"
-                        : "bg-green-500 hover:bg-green-600"
+                      showDrawer ? "bg-gray-500 hover:bg-gray-500" : "bg-green-500 hover:bg-green-600"
                     }`}
                   >
                     Edit Cohort
@@ -126,9 +116,7 @@ className={`drawer transition-transform transform ${
                 <button
                   disabled={showDrawer}
                   className={`transition duration-300 ease-in-out text-white px-4 py-2 w-full rounded hover:bg-blue-600 ${
-                    showDrawer
-                      ? "bg-gray-500 hover:bg-gray-500"
-                      : "bg-blue-500 hover:bg-blue-600"
+                    showDrawer ? "bg-gray-500 hover:bg-gray-500" : "bg-blue-500 hover:bg-blue-600"
                   }`}
                   onClick={() => setShowDrawer(true)}
                 >
@@ -143,10 +131,7 @@ className={`drawer transition-transform transform ${
 
         {loading && <div>Loading...</div>}
 
-        {students &&
-          students.map((student) => (
-            <StudentCard key={student._id} {...student} />
-          ))}
+        {students && students.map((student) => <StudentCard key={student._id} {...student} />)}
       </div>
     </div>
   );
