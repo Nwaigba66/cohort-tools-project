@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import {
-  createCohortSlug,
-  convertSlugToName,
-  getFormattedDate,
-} from "../utils/index";
+import { createCohortSlug, convertSlugToName, getFormattedDate } from "../utils/index";
 
 // Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL = import.meta.env.VITE_API_URL;
@@ -90,15 +86,11 @@ function CohortEditPage() {
 
   return (
     <div className="CohortEditPage p-8 pb-16 mb-10 mt-10 rounded-lg shadow-md flex flex-col h-full relative w-full max-w-3xl mx-auto bg-white">
-      <h3 className="text-2xl font-semibold text-gray-700 mb-6 sticky left-0">
-        Edit Cohort
-      </h3>
+      <h3 className="text-2xl font-semibold text-gray-700 mb-6 sticky left-0">Edit Cohort</h3>
 
       {showDeleteConfirmation && (
         <div className="absolute top-0 left-0 w-72 h-48 bg-white flex flex-col justify-center items-center border border-gray-300 rounded-md p-4 shadow-md">
-          <p className="mb-4">
-            Are you sure you want to delete this cohortList?
-          </p>
+          <p className="mb-4">Are you sure you want to delete this cohortList?</p>
           <div className="flex space-x-4">
             <button
               onClick={handleDelete}
@@ -116,10 +108,7 @@ function CohortEditPage() {
         </div>
       )}
 
-      <form
-        onSubmit={handleSubmit}
-        className="grid grid-cols-1 gap-4 mt-6 px-4"
-      >
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 mt-6 px-4">
         <input
           type="text"
           name="cohortSlug"
@@ -129,10 +118,7 @@ function CohortEditPage() {
           disabled
           className="border rounded p-2 w-full mb-6"
         />
-        <label
-          htmlFor="cohortName"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
+        <label htmlFor="cohortName" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
           Cohort Name
         </label>
         <input
@@ -145,37 +131,19 @@ function CohortEditPage() {
           className="border rounded p-2 w-full mb-6"
         />
 
-        <label
-          htmlFor="format"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
+        <label htmlFor="format" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
           Format
         </label>
-        <select
-          name="format"
-          id="format"
-          value={cohort.format}
-          onChange={handleChange}
-          className="border rounded p-2 w-full mb-6 bg-gray-50"
-        >
+        <select name="format" id="format" value={cohort.format} onChange={handleChange} className="border rounded p-2 w-full mb-6 bg-gray-50">
           <option value="">-- Select Format --</option>
           <option value="Full Time">Full Time</option>
           <option value="Part Time">Part Time</option>
         </select>
 
-        <label
-          htmlFor="format"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
+        <label htmlFor="format" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
           Program
         </label>
-        <select
-          name="program"
-          id="program"
-          value={cohort.program}
-          onChange={handleChange}
-          className="border rounded p-2 w-full mb-6 bg-gray-50"
-        >
+        <select name="program" id="program" value={cohort.program} onChange={handleChange} className="border rounded p-2 w-full mb-6 bg-gray-50">
           <option value="">-- Select Program --</option>
           <option value="Web Dev">Web Development</option>
           <option value="UX/UI">UX/UI</option>
@@ -183,19 +151,10 @@ function CohortEditPage() {
           <option value="Cybersecurity">Cybersecurity</option>
         </select>
 
-        <label
-          htmlFor="format"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
+        <label htmlFor="format" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
           Campus
         </label>
-        <select
-          name="campus"
-          id="campus"
-          value={cohort.campus}
-          onChange={handleChange}
-          className="border rounded p-2 w-full mb-6 bg-gray-50"
-        >
+        <select name="campus" id="campus" value={cohort.campus} onChange={handleChange} className="border rounded p-2 w-full mb-6 bg-gray-50">
           <option value="">-- Select Campus --</option>
           <option value="Madrid">Madrid</option>
           <option value="Barcelona">Barcelona</option>
@@ -207,10 +166,7 @@ function CohortEditPage() {
           <option value="Remote">Remote</option>
         </select>
 
-        <label
-          htmlFor="startDate"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
+        <label htmlFor="startDate" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
           Start Date:
         </label>
         <input
@@ -222,10 +178,7 @@ function CohortEditPage() {
           className="border rounded p-2 w-full mb-6 bg-gray-50 h-10"
         />
 
-        <label
-          htmlFor="endDate"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
+        <label htmlFor="endDate" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
           End Date:
         </label>
         <input
@@ -238,10 +191,7 @@ function CohortEditPage() {
         />
 
         <div className="flex items-center mt-6 mb-6">
-          <label
-            htmlFor="inProgress"
-            className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-          >
+          <label htmlFor="inProgress" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
             In Progress
           </label>
           <input
@@ -254,10 +204,7 @@ function CohortEditPage() {
           />
         </div>
 
-        <label
-          htmlFor="programManager"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
+        <label htmlFor="programManager" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
           Program Manager
         </label>
         <input
@@ -269,10 +216,7 @@ function CohortEditPage() {
           className="border rounded p-2 w-full mb-6"
         />
 
-        <label
-          htmlFor="leadTeacher"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
+        <label htmlFor="leadTeacher" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
           Lead Teacher
         </label>
         <input
@@ -284,10 +228,7 @@ function CohortEditPage() {
           className="border rounded p-2 w-full mb-6"
         />
 
-        <label
-          htmlFor="totalHours"
-          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-        >
+        <label htmlFor="totalHours" className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold">
           Total Hours
         </label>
         <input
@@ -302,14 +243,19 @@ function CohortEditPage() {
         <br />
 
         <button
-         type="submit"
-         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
-         >Save</button>
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
+        >
+          Save
+        </button>
 
         <button
           disabled={loading}
           type="button"
-          onClick={() => setShowDeleteConfirmation(true)}
+          onClick={() => {
+            console.log("click");
+            setShowDeleteConfirmation(true);
+          }}
           className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
         >
           Delete

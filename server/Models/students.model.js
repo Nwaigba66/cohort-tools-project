@@ -8,16 +8,16 @@ const studentsSchema = new Schema({
   email: { type: String },
   phone: { type: String },
   linkedinUrl: { type: String },
-  languages: { type: String },
+  languages: { type: Array },
   program: { type: String },
   background: { type: String },
   image: { type: String },
-  cohort: { type: Number },
+  cohort: { type: Schema.Types.ObjectId, ref: "Cohorts" },
   projects: { type: Array },
 });
 
 // CREATE A MODEL
-const Students = mongoose.model("Students", studentsSchema);
+const StudentsModel = mongoose.model("Students", studentsSchema);
 
 // EXPORT THE MODEL
-module.exports = Students;
+module.exports = StudentsModel;
