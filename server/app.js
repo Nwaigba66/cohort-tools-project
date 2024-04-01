@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+require ("dotenv").config();
 const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 5005;
 const cors = require("cors");
@@ -38,6 +39,15 @@ mongoose
 app.get("/docs", (req, res) => {
   res.sendFile(__dirname + "/views/docs.html");
 });
+
+// 👇 Start handling routes here
+const indexRoutes = require("./routes/index.routes");
+app.use("/api", indexRoutes);
+
+//this is to link the auth routes to the server
+const authRoutes = require("./routes/auth.routes");
+app.use("/auth", authRoutes);
+
 
 // get all Students
 app.get("/api/students", (req, res) => {

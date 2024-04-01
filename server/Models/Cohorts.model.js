@@ -4,10 +4,7 @@ const Schema = mongoose.Schema;
 // CREATE A SCHEMA
 const cohortsSchema = new Schema({
   cohortSlug: { type: String },
-  cohortName: { type: String },
-  program: { type: String },
-  format: { type: String },
-  campus: { type: String },
+  
   startDate: { type: Date, default: Date.now },
   endDate: { type: Date },
   inProgress: { type: Boolean, default: true },
